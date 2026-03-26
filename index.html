@@ -1,7 +1,15 @@
 <script>
-  const params = new URLSearchParams(window.location.search);
+  // Функция для извлечения параметров из URL (из хэша)
+  function getHashParams() {
+    const hash = window.location.hash.substring(1); // убираем #
+    const params = new URLSearchParams(hash);
+    return params;
+  }
+
+  const params = getHashParams();
   const accessToken = params.get('access_token');
   const refreshToken = params.get('refresh_token');
+
   if (accessToken && refreshToken) {
     window.location.href = `myapp://reset-password?access_token=${accessToken}&refresh_token=${refreshToken}`;
   } else {

@@ -1,9 +1,9 @@
 <script>
   const params = new URLSearchParams(window.location.search);
-  const token = params.get('token');
-  const type = params.get('type');
-  if (token && type) {
-    window.location.href = `myapp://reset-password?token=${token}&type=${type}`;
+  const accessToken = params.get('access_token');
+  const refreshToken = params.get('refresh_token');
+  if (accessToken && refreshToken) {
+    window.location.href = `myapp://reset-password?access_token=${accessToken}&refresh_token=${refreshToken}`;
   } else {
     document.body.innerHTML = 'Ссылка недействительна. Пожалуйста, запросите сброс пароля заново.';
   }
